@@ -1,0 +1,15 @@
+.tclNav li a {
+    padding: .5em 1em;
+    color: #ddd;
+    text-decoration: none;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-radius: .5em;
+}
+
+.tclNav li a:hover {
+    color: white;
+    background: rgba(255, 255, 255, .1);
+}

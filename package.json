@@ -1,0 +1,33 @@
+{
+  "name": "zeachco.com_portal",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "auto-bind-es5": "^1.1.0",
+    "classnames": "^2.2.5",
+    "immutable-short-string-notation": "^2.1.2",
+    "node-noop": "^1.0.0",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-icons": "^2.2.5",
+    "react-immutable-proptypes": "^2.1.0",
+    "react-redux": "^5.0.6",
+    "react-router": "next",
+    "react-router-dom": "next",
+    "react-scripts": "1.0.12",
+    "redux": "^3.7.2"
+  },
+  "devDependencies": {
+    "bulma": "^0.5.1",
+    "node-sass": "^4.5.3",
+    "node-sass-watcher": "^0.5.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "proxy": "http://127.0.0.1:8080"
+}

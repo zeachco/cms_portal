@@ -1,0 +1,8 @@
+.close-button {
+    cursor: pointer;
+    font-size: 1.75em;
+}
+
+.close-button:hover path{
+    fill: red;
+}

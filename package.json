@@ -2,6 +2,7 @@
   "name": "zeachco.com_portal",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://zeachco.github.io/cms_portal",
   "dependencies": {
     "auto-bind-es5": "^1.1.0",
     "classnames": "^2.2.5",

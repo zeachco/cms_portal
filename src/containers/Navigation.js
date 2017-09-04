@@ -7,7 +7,13 @@ import {noop} from 'node-noop';
 
 import './Navigation.css';
 import {disconnect} from '../store/actions/session';
+import {changeLanguage} from '../store/actions/i18n';
 import BusyServer from '../components/BusyServer';
+
+const switchLang = lang => e => {
+    e.preventDefault();
+    changeLanguage(lang);
+};
 
 const MenuItem = ({
     text,
@@ -32,8 +38,16 @@ const Navigation = ({
     isChecking,
     displayName,
     l,
+    selectablesLangs,
 }) => {
     const links = [];
+    links.push(
+        selectablesLangs.map(lang => (
+            <li className="pull-right" key={'switch_to_+l'} onClick={switchLang(lang)}>
+                <a href={lang}>{l.get(lang, lang)}</a>
+            </li>
+        ))
+    );
     if (connected) {
         links.push(
             <MenuItem key="users" url="users" text={l.get('users')} />,
@@ -66,6 +80,7 @@ Navigation.propTypes = {
     isChecking: PropTypes.bool.isRequired,
     displayName: PropTypes.string.isRequired,
     l: ImmutableProps.map.isRequired,
+    selectablesLangs: ImmutableProps.list.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -73,6 +88,7 @@ const mapStateToProps = state => ({
     isChecking: state.getIn('session.retreivingSession'),
     displayName: state.getIn('session.info.firstName') || state.getIn('session.info.email') || state.getIn('i18n.strings.profile'),
     l: state.getIn('i18n.strings'),
+    selectablesLangs: state.getIn('i18n.selectables'),
 });
 
 export default connect(mapStateToProps)(Navigation);

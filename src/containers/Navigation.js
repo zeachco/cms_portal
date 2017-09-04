@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import ImmutableProps from 'react-immutable-proptypes';
 import Exit from 'react-icons/lib/md/exit-to-app';
 import Account from 'react-icons/lib/md/account-box';
-import Users from 'react-icons/lib/md/people-outline';
+import People from 'react-icons/lib/md/people-outline';
 import Box from 'react-icons/lib/go/package';
 
 import './Navigation.css';
@@ -37,7 +37,7 @@ const Navigation = ({
     );
     if (connected) {
         links.push(
-            <MenuItem key="users" Icon={Users} url="users" text={l.get('users')} />,
+            <MenuItem key="users" Icon={People} url="users" text={l.get('users')} />,
             <MenuItem key="items" Icon={Box} url="items" text={l.get('items')} />,
             <MenuItem key="profile" Icon={Account} url="profile" text={displayName} />,
             <MenuItem key="logout" Icon={Exit} url="/" text={l.get('logout')} onClick={disconnect} />

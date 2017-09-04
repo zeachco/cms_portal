@@ -25,7 +25,9 @@ export const custom = (url, method = METHODS.GET, data = {}) => {
     };
     if (method !== METHODS.GET) options.body = JSON.stringify(data);
     const request = new Request(url, options);
-    return fetch(request).then(xhr => xhr.json());
+    return fetch(request, {
+        credentials: 'same-origin',
+    }).then(xhr => xhr.json());
 };
 
 export const backend = (service, method = METHODS.GET, data = {}) => {

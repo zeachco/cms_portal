@@ -7,7 +7,8 @@ import './theme/style.css';
 import store from './store';
 import {checkSession} from './store/actions/session';
 import {changeLanguage} from './store/actions/i18n';
-// import registerServiceWorker from './registerServiceWorker';
+import registerServiceWorker from './registerServiceWorker';
+// import { Router, Route, Switch } from 'react-router'
 
 const mount = () => {
     const ThreeColsLayout = require('./containers/ThreeColsLayout').default;
@@ -28,5 +29,4 @@ if (navigator && navigator.languages) {
 }
 
 if (module.hot) module.hot.accept('./containers/ThreeColsLayout', mount);
-// registerServiceWorker();
-
+registerServiceWorker();

@@ -22,7 +22,7 @@ MenuItem.propTypes = {
     text: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
     onClick: PropTypes.func,
-    Icon: PropTypes.node,
+    Icon: PropTypes.func,
 };
 
 export default MenuItem;

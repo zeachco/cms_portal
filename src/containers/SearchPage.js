@@ -15,12 +15,7 @@ const SearchPage = ({
     } else {
         contentJsx = (
             <div>
-                <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum nisi, molestias at, nostrum ab laboriosam error asperiores nobis ex placeat cumque quas consequuntur quasi laborum repellendus et? Repellat, voluptatem nemo?
-                </div>
                 <ul>
-                    {items.map((l, i) => (<li key={i}>{i} - {l}<hr /></li>))}
-                    {items.map((l, i) => (<li key={i}>{i} - {l}<hr /></li>))}
-                    {items.map((l, i) => (<li key={i}>{i} - {l}<hr /></li>))}
                     {items.map((l, i) => (<li key={i}>{i} - {l}<hr /></li>))}
                 </ul>
             </div>

@@ -1,12 +1,3 @@
-html,
-body,
-#root {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    background: #333;
-}
-
 @keyframes spin {
     0% {transform: rotate(0deg)}
     100% {transform: rotate(90deg)}
@@ -17,88 +8,13 @@ body,
     animation: spin .5s infinite linear;
 }
 
-.tclMain {
-    display: grid;
+html,
+body,
+#root {
+    margin: 0;
+    padding: 0;
     height: 100%;
-    grid-template-columns: 1fr;
-    grid-template-rows: 3em 1fr;
-    grid-gap: .5em;
-    padding: 0;
-}
-
-.tclMain.detailed {
-    grid-template-rows: 3em 20% 1fr ;
-}
-
-.tclMain.detailed .tclEditor {
-    display: block;
-}
-
-.tclPage {
-    box-shadow: inset 0 0 4px black;
-    overflow-y: auto;
-    color: #000;
-    background: #eee;
-    margin: .5em;
-    padding: 1em;
-    border-radius: 5px;
-    border: 2px solid rgba(255, 255, 255, .5);
-}
-
-.tclList {
-    min-width: 150px;
-    grid-column: 1;
-    grid-row: 2;
-}
-
-.tclEditor {
-    display: none;
-    grid-column: 1;
-    grid-row: 3;
-}
-
-.tclNav {
-    grid-column: 1;
-    grid-row: 1;
-    margin: 0;
-    padding: .5em;
-    background: rgba(64, 64, 80, .8);
-    color: white;
-    box-shadow: 0 0 4px black;
-}
-
-.tclNav li {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: inline-block;
-}
-
-@media only screen and (min-width: 800px) {
-    .tclMain {
-        grid-template-columns: 150px 1fr;
-        grid-template-rows: 1fr;
-    }
-    .tclMain.detailed {
-        grid-template-columns: 150px 1fr 1fr;
-        grid-template-rows: 1fr;
-    }
-    .tclNav {
-        grid-column: 1;
-        grid-row: 1;
-    }
-    .tclNav li {
-        display: block;
-    }
-    .tclList {
-        grid-column: 2;
-        grid-row: 1;
-    }
-    .tclEditor {
-        grid-column: 3;
-        grid-row: 1;
-        min-width: 350px;
-    }
+    background: #333;
 }
 
 .field {

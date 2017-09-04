@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import cx from 'classnames';
 
+import './ThreeColsLayout.css';
 import Navigation from './Navigation';
 import SearchPage from './SearchPage';
 import EditPage from './EditPage';

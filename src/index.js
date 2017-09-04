@@ -10,11 +10,11 @@ import {changeLanguage} from './store/actions/i18n';
 // import registerServiceWorker from './registerServiceWorker';
 
 const mount = () => {
-    const App = require('./containers/ThreeColsLayout').default;
+    const ThreeColsLayout = require('./containers/ThreeColsLayout').default;
     render(
         <Provider store={store}>
             <Router>
-                <App />
+                <ThreeColsLayout />
             </Router>
         </Provider>,
         document.getElementById('root')

@@ -14,8 +14,8 @@ const ThreeColsLayout = ({
 }) => (
     <div className={cx('tclMain', {detailed: detailed && !showLogin})}>
         <Navigation />
-        <SearchPage />
         <EditPage />
+        <SearchPage />
     </div>
 );
 

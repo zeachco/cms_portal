@@ -5,7 +5,7 @@ export const METHODS = {
     DELETE: 'delete',
 };
 
-export const BACKEND_URL = 'http://159.203.2.182:8080/';
+export const BACKEND_URL = 'https://zeachco.com/';
 // export const BACKEND_URL = '/';
 export const SPECIAL_PARAMS = '?_domain_=zeachco.com';
 // export const SPECIAL_PARAMS = '';

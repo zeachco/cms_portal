@@ -2,8 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import ImmutableProps from 'react-immutable-proptypes';
-import {Link} from 'react-router-dom';
-import {noop} from 'node-noop';
 import Exit from 'react-icons/lib/md/exit-to-app';
 import Account from 'react-icons/lib/md/account-box';
 import Users from 'react-icons/lib/md/people-outline';
@@ -13,33 +11,13 @@ import './Navigation.css';
 import {disconnect} from '../store/actions/session';
 import {changeLanguage} from '../store/actions/i18n';
 import BusyServer from '../components/BusyServer';
+import MenuItem from '../components/MenuItem';
 
 const switchLang = lang => e => {
     e.preventDefault();
     changeLanguage(lang);
 };
 
-const MenuItem = ({
-    text,
-    url,
-    onClick = noop,
-    Icon,
-}) => (
-    <li onClick={onClick}>
-        {Icon ? <Link to={url}>
-            <Icon />{' '}
-            <span className="no-mobile">{text}</span>
-        </Link> : <Link to={url}>{text}</Link>
-        }
-    </li>
-);
-
-MenuItem.propTypes = {
-    text: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired,
-    onClick: PropTypes.func,
-    Icon: PropTypes.node,
-};
 
 const Navigation = ({
     connected,

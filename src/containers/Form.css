@@ -17,6 +17,7 @@ label.field input {
     padding: .5em 1em;
     flex: 1 0 120px;
     width: 100%;
+    outline: none;
 }
 
 label.field:hover input {

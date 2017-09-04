@@ -13,19 +13,40 @@ const MenuItem = ({
     <li><Link to={url}>{text}</Link></li>
 );
 
+MenuItem.propTypes = {
+    text: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+};
+
 const Navigation = ({
     connected,
     isChecking,
     displayName,
     l,
-}) => (
-    <nav className="tclNav">
-        <MenuItem url="" text={l.get('home')} />
-        <MenuItem url="users" text={l.get('users')} />
-        <MenuItem url="items" text={l.get('items')} />
-        <MenuItem url="profile" text={connected ? displayName : isChecking ? 'Connecting...' : 'please connect'} />
-    </nav>
-);
+}) => {
+    const links = [];
+    if (connected) {
+        links.push(
+            `Hello ${displayName}!`,
+            <MenuItem key="users" url="users" text={l.get('users')} />,
+            <MenuItem key="items" url="items" text={l.get('items')} />,
+            <MenuItem key="logout" url="logout" text={l.get('logout')} />
+        );
+    } else if (isChecking) {
+        links.push(
+            'Checking session...'
+        );
+    } else {
+        links.push(
+            <MenuItem key="login" url="login" text={l.get('login')} />
+        );
+    }
+    return (
+        <nav className="tclNav">
+            {links}
+        </nav>
+    );
+};
 
 Navigation.propTypes = {
     connected: PropTypes.bool.isRequired,

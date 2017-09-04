@@ -9,7 +9,7 @@ export default {
     logout: 'Déconnexion',
     profile: 'Profil',
     busyServer: 'En attente du serveur...',
-    pleaseConnect: 'Veuilleuz vous identifier',
+    pleaseConnect: 'Veuillez vous identifier',
     username: 'Utilisateur',
     password: 'Mot de passe',
 };

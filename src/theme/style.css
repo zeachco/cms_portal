@@ -19,23 +19,4 @@ body,
     }
 }
 
-.field {
-    padding: .5em;
-    margin: .5em 0;
-    /* text-align: right; */
-    /* border-bottom: 1px solid #888; */
-}
-
-.field input {
-    background: #ccc;
-    font-weight: 700;
-    border: 1px solid #333;
-    text-align: right;
-    padding: .5em;
-    float: right;
-    /* margin: -.5em 0; */
-}
-
-.field input:disabled {
-    opacity: .5;
-}
+@import '../containers/Form.css';

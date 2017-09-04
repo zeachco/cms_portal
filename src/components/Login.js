@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import autobind from 'auto-bind-es5';
 
-import './Login.css';
 import {login} from '../store/actions/session';
 
 class Login extends Component {
@@ -30,17 +29,19 @@ class Login extends Component {
     render() {
         const {retreivingSession, l} = this.props;
         return (
-            <form onSubmit={this.handleSubmit} className="loginContainer">
+            <form onSubmit={this.handleSubmit} className="cmsForm">
                 <h2>{l.get('pleaseConnect')}</h2>
-                <div className="field">
-                    <label>{l.get('username')} <input ref={this.refUser} autoFocus disabled={retreivingSession} /></label>
-                </div>
-                <div className="field" >
-                    <label>{l.get('password')} <input ref={this.refPass} type="password" disabled={retreivingSession} /></label>
-                </div>
-                <div className="field" >
+                <label className="field">
+                    <span>{l.get('username')}</span>
+                    <input ref={this.refUser} autoFocus disabled={retreivingSession} />
+                </label>
+                <label className="field">
+                    <span>{l.get('password')}</span>
+                    <input ref={this.refPass} type="password" disabled={retreivingSession} />
+                </label>
+                <label className="field">
                     <input type="submit" value={l.get('login')} disabled={retreivingSession} />
-                </div>
+                </label>
             </form>
         );
     }

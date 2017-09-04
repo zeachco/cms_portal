@@ -7,6 +7,7 @@ import {noop} from 'node-noop';
 
 import './Navigation.css';
 import {disconnect} from '../store/actions/session';
+import BusyServer from '../components/BusyServer';
 
 const MenuItem = ({
     text,
@@ -43,14 +44,14 @@ const Navigation = ({
     } else if (isChecking) {
         links.push(
             <li key="loading">
-                <label>
-                    Checking session...
-                </label>
+                <BusyServer />
             </li>
         );
     } else {
         links.push(
-            <MenuItem key="login" url="login" text={l.get('login')} />
+            <li key="loading">
+                <label>{l.get('login')}</label>
+            </li>
         );
     }
     return (
@@ -70,8 +71,8 @@ Navigation.propTypes = {
 const mapStateToProps = state => ({
     connected: state.getIn('session.isAuth'),
     isChecking: state.getIn('session.retreivingSession'),
-    displayName: state.getIn('session.info.firstName') || state.getIn('session.info.email') || state.getIn('i18n.profile'),
-    l: state.get('i18n'),
+    displayName: state.getIn('session.info.firstName') || state.getIn('session.info.email') || state.getIn('i18n.strings.profile'),
+    l: state.getIn('i18n.strings'),
 });
 
 export default connect(mapStateToProps)(Navigation);

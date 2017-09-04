@@ -8,3 +8,7 @@ export const UI = {
     ACTIVATE_PANEL: 'UI.ACTIVATE_PANEL',
     CLOSE_PANEL: 'UI.CLOSE_PANEL',
 };
+
+export const I18N = {
+    CHANGE_LANGUAGE: 'I18N.CHANGE_LANGUAGE',
+};

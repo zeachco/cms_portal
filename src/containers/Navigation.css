@@ -1,4 +1,5 @@
-.tclNav li a {
+.tclNav li a,
+.tclNav li label {
     padding: .5em 1em;
     color: #ddd;
     text-decoration: none;

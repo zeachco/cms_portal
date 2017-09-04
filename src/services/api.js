@@ -38,7 +38,7 @@ if (process.env.NODE_ENV !== 'production') {
     window.SETTINGS = SETTINGS;
     SETTINGS.backend = 'http://127.0.0.1:8080/';
     const fallbackToProd = () => {
-        alert('Local backend did not respond :(\n\n' + // eslint-disable-line no-alert
+        console.error('Local backend did not respond :(\n\n' + // eslint-disable-line no-console
             'CAREFULL!\n API calls will be redirected to production server.\n\n' +
             'If you want to use a local backend, start it then refresh this app');
         SETTINGS.backend = defaultBackend;

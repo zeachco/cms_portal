@@ -33,6 +33,6 @@ label.field input:disabled {
     margin: 0 auto;
     background: #eee;
     padding: 5%;
-    box-shadow: inset 0 0 20px 2px white;
+    border: 1px solid #aaa;
     border-radius: 5%;
 }

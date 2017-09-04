@@ -29,15 +29,13 @@ class Login extends Component {
     render() {
         const {retreivingSession, l} = this.props;
         return (
-            <form onSubmit={this.handleSubmit} className="cmsForm">
+            <form onSubmit={this.handleSubmit} className="cmsForm" style={{maxWidth: 300}}>
                 <h2>{l.get('pleaseConnect')}</h2>
                 <label className="field">
-                    <span>{l.get('username')}</span>
-                    <input ref={this.refUser} autoFocus disabled={retreivingSession} />
+                    <input ref={this.refUser} placeholder={l.get('username')} autoFocus disabled={retreivingSession} />
                 </label>
                 <label className="field">
-                    <span>{l.get('password')}</span>
-                    <input ref={this.refPass} type="password" disabled={retreivingSession} />
+                    <input ref={this.refPass} placeholder={l.get('password')} type="password" disabled={retreivingSession} />
                 </label>
                 <label className="field">
                     <input type="submit" value={l.get('login')} disabled={retreivingSession} />

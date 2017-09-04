@@ -5,15 +5,14 @@ export const METHODS = {
     DELETE: 'delete',
 };
 
+const defaultSpace = 'zeachco.com';
+const defaultBackend = `https://${defaultSpace}/`;
+
 export const SETTINGS = {
-    backend: 'https://zeachco.com/',
-    space: 'zeachco.com',
+    backend: defaultBackend,
+    space: defaultSpace,
     contentType: 'application/json',
 };
-if (process.env.NODE_ENV !== 'production') {
-    window.SETTINGS = SETTINGS;
-    SETTINGS.backend = 'http://127.0.0.1:8080/';
-}
 
 export const custom = (url, method = METHODS.GET, data = {}) => {
     const headers = new Headers({
@@ -33,5 +32,20 @@ export const backend = (service, method = METHODS.GET, data = {}) => {
     const url = `${SETTINGS.backend}api/${service}`;
     return custom(url, method, data);
 };
+
+// Dev helpers
+if (process.env.NODE_ENV !== 'production') {
+    window.SETTINGS = SETTINGS;
+    SETTINGS.backend = 'http://127.0.0.1:8080/';
+    const fallbackToProd = () => {
+        alert('Local backend did not respond :(\n\n' + // eslint-disable-line no-alert
+            'CAREFULL!\n API calls will be redirected to production server.\n\n' +
+            'If you want to use a local backend, start it then refresh this app');
+        SETTINGS.backend = defaultBackend;
+    };
+    backend('wtf').then(response => {
+        if (response.space !== defaultSpace) fallbackToProd();
+    }).catch(fallbackToProd);
+}
 
 export default backend;

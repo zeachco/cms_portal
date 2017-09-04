@@ -4,6 +4,10 @@ import PropTypes from 'prop-types';
 import ImmutableProps from 'react-immutable-proptypes';
 import {Link} from 'react-router-dom';
 import {noop} from 'node-noop';
+import Exit from 'react-icons/lib/md/exit-to-app';
+import Account from 'react-icons/lib/md/account-box';
+import Users from 'react-icons/lib/md/people-outline';
+import Box from 'react-icons/lib/go/package';
 
 import './Navigation.css';
 import {disconnect} from '../store/actions/session';
@@ -19,11 +23,14 @@ const MenuItem = ({
     text,
     url,
     onClick = noop,
+    Icon,
 }) => (
     <li onClick={onClick}>
-        <Link to={url}>
-            {text}
-        </Link>
+        {Icon ? <Link to={url}>
+            <Icon />{' '}
+            <span className="no-mobile">{text}</span>
+        </Link> : <Link to={url}>{text}</Link>
+        }
     </li>
 );
 
@@ -31,6 +38,7 @@ MenuItem.propTypes = {
     text: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
     onClick: PropTypes.func,
+    Icon: PropTypes.node,
 };
 
 const Navigation = ({
@@ -44,16 +52,17 @@ const Navigation = ({
     links.push(
         selectablesLangs.map(lang => (
             <li className="pull-right" key={'switch_to_+l'} onClick={switchLang(lang)}>
-                <a href={lang}>{l.get(lang, lang)}</a>
+                <a className="no-desktop" href={lang} title={l.get(lang, lang)}>{l.get(lang + '_short', lang)}</a>
+                <a className="no-mobile" href={lang} >{l.get(lang, lang)}</a>
             </li>
         ))
     );
     if (connected) {
         links.push(
-            <MenuItem key="users" url="users" text={l.get('users')} />,
-            <MenuItem key="items" url="items" text={l.get('items')} />,
-            <MenuItem key="profile" url="profile" text={displayName} />,
-            <MenuItem key="logout" url="logout" text={l.get('logout')} onClick={disconnect} />
+            <MenuItem key="users" Icon={Users} url="users" text={l.get('users')} />,
+            <MenuItem key="items" Icon={Box} url="items" text={l.get('items')} />,
+            <MenuItem key="profile" Icon={Account} url="profile" text={displayName} />,
+            <MenuItem key="logout" Icon={Exit} url="/" text={l.get('logout')} onClick={disconnect} />
         );
     } else if (isChecking) {
         links.push(

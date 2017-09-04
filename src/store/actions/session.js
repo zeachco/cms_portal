@@ -9,7 +9,9 @@ export const receiveSession = session => {
 export const badLogin = () => store.dispatch({type: SESSION.DISCONNECT, payload: 'bad login'});
 
 export const login = (username, password) => {
+    store.dispatch({type: SESSION.DISCONNECT, payload: 'reconnecting'});
     store.dispatch({type: SESSION.CHECK_SESSION});
+    debugger;//eslint-disable-line
     backend('login', METHODS.POST, {username, password}).then(receiveSession).catch(badLogin);
 };
 

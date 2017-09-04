@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import autobind from 'auto-bind-es5';
+import Cog from 'react-icons/lib/fa/cog';
 
 import {login} from '../store/actions/session';
 
@@ -27,7 +28,14 @@ class Login extends Component {
     }
 
     render() {
-        if (this.props.retreivingSession) return <div>Retriving session...</div>;
+        if (this.props.retreivingSession) {
+            return (
+                <div>
+                    <Cog className="spin" />{' '}
+                    <span>Retriving session...</span>
+                </div>
+            );
+        }
         return (
             <form onSubmit={this.handleSubmit}>
                 <h2>Please connect</h2>

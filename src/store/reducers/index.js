@@ -1,44 +1,24 @@
-import {fromJS} from 'immutable-short-string-notation';
+import {Map} from 'immutable-short-string-notation';
 
-import {SESSION, UI} from '../actionTypes';
+import session from './session';
+import ui from './ui';
+import i18n from './i18n';
 
-export const defaultState = fromJS({
-    session: {
-        isAuth: false,
-        retreivingSession: true,
-    },
-    ui: {
-        editing: false,
-    },
-    i18n: {
-        home: 'Acceuil',
-        users: 'Utilisateur',
-        items: 'Articles',
-    },
-});
+const reducers = {
+    session,
+    ui,
+    i18n,
+};
 
-export const reducers = (state = defaultState, {type, payload}) => {
+export default (state = Map(), action) => {
+    let lastState = state;
 
-    switch (type) {
-        case SESSION.CHECK_SESSION: return state
-            .setIn('session.retreivingSession', true);
-
-        case SESSION.RECEIVE_SESSION: return state
-            .setIn('session.retreivingSession', false)
-            .setIn('session.isAuth', !!payload)
-            .mergeDeepIn('session.info', payload);
-
-        case SESSION.DISCONNECT: return state
-            .setIn('session.retreivingSession', false)
-            .setIn('session.isAuth', false)
-            .deleteIn('session.info');
-
-        case UI.ACTIVATE_PANEL: return state
-            .setIn('ui.editing', true);
-
-        case UI.CLOSE_PANEL: return state
-            .setIn('ui.editing', false);
-
-        default: return state;
+    // loop all other sub reducers
+    for (const namespace in reducers) {
+        const reducer = reducers[namespace];
+        const newState = reducer(lastState.get(namespace), action, state, namespace);
+        lastState = lastState.set(namespace, newState);
     }
+
+    return lastState;
 };

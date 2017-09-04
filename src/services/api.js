@@ -5,21 +5,32 @@ export const METHODS = {
     DELETE: 'delete',
 };
 
-export const BACKEND_URL = 'https://zeachco.com/';
-// export const BACKEND_URL = '/';
-export const SPECIAL_PARAMS = '?_domain_=zeachco.com';
-// export const SPECIAL_PARAMS = '';
+export const SETTINGS = {
+    backend: 'https://zeachco.com/',
+    space: 'zeachco.com',
+    contentType: 'application/json',
+};
+if (process.env.NODE_ENV !== 'production') {
+    window.SETTINGS = SETTINGS;
+    SETTINGS.backend = 'http://127.0.0.1:8080/';
+}
 
 export const custom = (url, method = METHODS.GET, data = {}) => {
-    const options = {method};
+    const headers = new Headers({
+        'Content-Type': SETTINGS.contentType,
+        'x-space': SETTINGS.space,
+    });
+    const options = {
+        method,
+        headers,
+    };
     if (method !== METHODS.GET) options.body = JSON.stringify(data);
     const request = new Request(url, options);
-    request.headers.set('Content-Type', 'application/json');
     return fetch(request).then(xhr => xhr.json());
 };
 
 export const backend = (service, method = METHODS.GET, data = {}) => {
-    const url = `${BACKEND_URL}api/${service}${SPECIAL_PARAMS}`;
+    const url = `${SETTINGS.backend}api/${service}`;
     return custom(url, method, data);
 };
 

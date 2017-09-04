@@ -13,3 +13,9 @@
     color: white;
     background: rgba(255, 255, 255, .1);
 }
+
+@media only screen and (min-width: 800px) {
+    .tclNav li {
+        display: block;
+    }
+}

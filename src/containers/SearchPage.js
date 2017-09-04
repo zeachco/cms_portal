@@ -14,17 +14,15 @@ const SearchPage = ({
         contentJsx = <Login />;
     } else {
         contentJsx = (
-            <div>
-                <ul>
-                    {items.map((l, i) => (<li key={i}>{i} - {l}<hr /></li>))}
-                </ul>
-            </div>
+            <ul>
+                {items.map((l, i) => (<li key={i}>{i} - {l}<hr /></li>))}
+            </ul>
         );
     }
     return (
-        <div className="tclList tclPage" onClick={openPanel}>
+        <section className="tclList tclPage" onClick={openPanel}>
             {contentJsx}
-        </div>
+        </section>
     );
 };
 

@@ -16,6 +16,7 @@
     "react-redux": "^5.0.6",
     "react-router": "next",
     "react-router-dom": "next",
+    "react-router-redux": "next",
     "react-scripts": "1.0.12",
     "redux": "^3.7.2"
   },
@@ -31,6 +32,5 @@
     "test": "react-scripts test --env=jsdom",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
-  },
-  "proxy": "http://127.0.0.1:8080"
+  }
 }

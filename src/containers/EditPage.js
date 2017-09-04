@@ -6,7 +6,7 @@ import Close from '../components/CloseButton';
 import {closePanel} from '../store/actions/panels';
 
 const SearchPage = () => (
-    <div className="tclEditor tclPage">
+    <section className="tclEditor tclPage">
         <div style={{
             float: 'right',
         }}
@@ -25,7 +25,7 @@ const SearchPage = () => (
         <div className="field">
             <label>Rating </label> <input type="range" />
         </div>
-    </div>
+    </section>
 );
 
 SearchPage.propTypes = {

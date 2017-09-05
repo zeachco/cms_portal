@@ -17,10 +17,16 @@ export const receiveSession = session => {
     }
     store.dispatch({type: SESSION.RECEIVE_SESSION, payload: session});
 };
+
 export const login = (username, password) => {
     store.dispatch({type: SESSION.DISCONNECT, payload: 'reconnecting'});
     store.dispatch({type: SESSION.CHECK_SESSION});
     backend('login', METHODS.POST, {username, password}).then(receiveSession).catch(badLogin);
+};
+
+export const logout = () => {
+    store.dispatch({type: SESSION.CHECK_SESSION});
+    backend('logout', METHODS.POST).then(disconnect).catch(err => console.error(err));//eslint-disable-line no-console
 };
 
 export const checkSession = () => {

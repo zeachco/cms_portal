@@ -8,7 +8,7 @@ import People from 'react-icons/lib/md/people-outline';
 import Box from 'react-icons/lib/go/package';
 
 import './Navigation.css';
-import {disconnect} from '../store/actions/session';
+import {logout} from '../store/actions/session';
 import {changeLanguage} from '../store/actions/i18n';
 import BusyServer from '../components/BusyServer';
 import MenuItem from '../components/MenuItem';
@@ -40,7 +40,7 @@ const Navigation = ({
             <MenuItem key="users" Icon={People} url="users" text={l.get('users')} />,
             <MenuItem key="items" Icon={Box} url="items" text={l.get('items')} />,
             <MenuItem key="profile" Icon={Account} url="profile" text={displayName} />,
-            <MenuItem key="logout" Icon={Exit} url="/" text={l.get('logout')} onClick={disconnect} />
+            <MenuItem key="logout" Icon={Exit} url="/" text={l.get('logout')} onClick={logout} />
         );
     } else if (isChecking) {
         links.push(

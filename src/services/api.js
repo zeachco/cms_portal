@@ -26,7 +26,7 @@ export const custom = (url, method = METHODS.GET, data = {}) => {
     if (method !== METHODS.GET) options.body = JSON.stringify(data);
     const request = new Request(url, options);
     return fetch(request, {
-        // credentials: 'include',
+        credentials: 'include',
     }).then(xhr => xhr.json());
 };
 

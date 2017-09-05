@@ -25,7 +25,7 @@ ThreeColsLayout.propTypes = {
 };
 
 const mapStateToProps = state => ({
-    showLogin: !state.getIn('session.isAuth') && !state.getIn('session.retreivingSession'),
+    showLogin: !state.getIn('session.isAuth'),
     detailed: state.getIn('ui.editing'),
 });
 

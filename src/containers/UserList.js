@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import autobind from 'auto-bind-es5';
+import {connect} from 'react-redux';
+import IProps from 'react-immutable-proptypes';
 
 import SearchPage from './SearchPage';
 import {backend} from '../services/api';
@@ -22,13 +24,17 @@ class UserList extends Component {
     render() {
         return (
             <SearchPage>
-                <h1>Users</h1>
+                <h1>{this.props.i18n.get('users')}</h1>
                 {this.state.items.map(user => <ListedUser key={user._id} {...user} />)}
             </SearchPage>
         );
     }
 }
 
-// TODO redux and i18n
+UserList.propTypes = {
+    i18n: IProps.map,
+};
 
-export default UserList;
+export default connect(state => ({
+    i18n: state.getIn('i18n.strings'),
+}))(UserList);

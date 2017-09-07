@@ -40,7 +40,7 @@ const Navigation = ({
             <MenuItem key="profile" Icon={Account} url="profile" text={displayName} />,
             <MenuItem key="users" Icon={People} url="users" text={l.get('users')} />,
             <MenuItem key="items" Icon={Box} url="items" text={l.get('items')} />,
-            <MenuItem key="logout" Icon={Exit} url="/" text={l.get('logout')} onClick={logout} />
+            <MenuItem key="logout" Icon={Exit} url="" text={l.get('logout')} onClick={logout} />
         );
     } else if (isChecking) {
         links.push(

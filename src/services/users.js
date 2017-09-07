@@ -5,6 +5,7 @@ import {backend} from './api';
 const usersCache = {
     lastTime: Date.now(),
 };
-export const getUsers = force => {
+
+export const getUsers = (force) => {
     return backend('admin/users').then(items => this.setState({items}));
 };

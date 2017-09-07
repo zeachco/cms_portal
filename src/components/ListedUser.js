@@ -9,7 +9,7 @@ const ListedUser = ({
     firstName,
     lastName,
 }) => (
-    <Link to={`/users/${_id}`} className="listed-user">
+    <Link to={`/users/edit/${_id}`} className="listed-user">
         <h4>{firstName} {lastName}</h4>
     </Link>
 );

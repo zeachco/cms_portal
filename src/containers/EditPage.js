@@ -13,11 +13,11 @@ const TopRight = styled.div`
 
 const EditPage = ({
     children,
-    currentPage,
+    page,
 }) => (
     <section className="tclEdit tclPage">
         <TopRight>
-            <Link to={'/' + currentPage}>
+            <Link to={'/' + page}>
                 <Close />
             </Link>
         </TopRight>
@@ -26,9 +26,9 @@ const EditPage = ({
 );
 
 EditPage.propTypes = {
-    currentPage: PropTypes.string,
+    page: PropTypes.string,
 };
 
 export default connect(state => ({
-    currentPage: state.getIn('router.params.list'),
+    page: state.getIn('router.params.page'),
 }))(EditPage);

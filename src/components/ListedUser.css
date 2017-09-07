@@ -1,0 +1,18 @@
+.listed-user {
+    display: block;
+    background: #eee;
+    text-decoration: none;
+    color: #222;
+
+    padding: .25em 1em;
+}
+
+.listed-user:hover {
+    background: #ccc;
+    color: #000;
+}
+
+.listed-user:active {
+    background: #aaa;
+    color: #f00;
+}

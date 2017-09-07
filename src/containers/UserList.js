@@ -2,49 +2,33 @@ import React, {Component} from 'react';
 import autobind from 'auto-bind-es5';
 
 import SearchPage from './SearchPage';
-import {Link} from 'react-router-dom';
+import {backend} from '../services/api';
+import ListedUser from '../components/ListedUser';
 
 class UserList extends Component {
     constructor(props) {
         super(props);
         autobind(this);
 
-        this.state = {};
+        this.state = {
+            items: [],
+        };
     }
 
     componentDidMount() {
-        console.log('Fetch items!');
+        backend('admin/users').then(items => this.setState({items}));
     }
 
     render() {
         return (
             <SearchPage>
                 <h1>Users</h1>
-                <ul>
-                    {document.location.href.split('').map((l, i)=>(
-                        <li>
-                            <Link key={i} to={`/users/${i}`}>{l}{l}{l}{l}{l}{l}{l}{l}{l}{l}{l}{l}{l}{l}  </Link>
-                        </li>
-                    ))}
-                    {document.location.href.split('').map((l, i)=>(
-                        <li>
-                            <Link key={i} to={`/users/${i}`}>{l}</Link>
-                        </li>
-                    ))}
-                    {document.location.href.split('').map((l, i)=>(
-                        <li>
-                            <Link key={i} to={`/users/${i}`}>{l}</Link>
-                        </li>
-                    ))}
-                    {document.location.href.split('').map((l, i)=>(
-                        <li>
-                            <Link key={i} to={`/users/${i}`}>{l}</Link>
-                        </li>
-                    ))}
-                </ul>
+                {this.state.items.map(user => <ListedUser key={user._id} {...user} />)}
             </SearchPage>
         );
     }
 }
+
+// TODO redux and i18n
 
 export default UserList;

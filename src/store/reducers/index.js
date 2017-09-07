@@ -1,13 +1,13 @@
 import {Map} from 'immutable-short-string-notation';
 
 import session from './session';
-import ui from './ui';
 import i18n from './i18n';
+import router from './router';
 
 const reducers = {
     session,
-    ui,
     i18n,
+    router,
 };
 
 export default (state = Map(), action) => {

@@ -58,7 +58,7 @@
         grid-template-rows: 1fr;
     }
     .tclMain.detailed {
-        grid-template-columns: 150px 1fr 1fr;
+        grid-template-columns: 150px 300px 1fr;
         grid-template-rows: 1fr;
     }
     .tclNav {

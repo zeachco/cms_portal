@@ -6,9 +6,13 @@ export const SESSION = {
 
 export const UI = {
     ACTIVATE_PANEL: 'UI.ACTIVATE_PANEL',
-    CLOSE_PANEL: 'UI.CLOSE_PANEL',
+    CLOSE_EDITOR: 'UI.CLOSE_EDITOR',
 };
 
 export const I18N = {
     CHANGE_LANGUAGE: 'I18N.CHANGE_LANGUAGE',
+};
+
+export const CORE = {
+    ROUTE_CHANGE: 'CORE.ROUTE_CHANGE',
 };

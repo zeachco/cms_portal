@@ -10,10 +10,10 @@ const MenuItem = ({
     Icon,
 }) => (
     <li onClick={onClick}>
-        {Icon ? <Link to={url}>
+        {Icon ? <Link to={'/' + url}>
             <Icon />{' '}
             <span className="no-mobile">{text}</span>
-        </Link> : <Link to={url}>{text}</Link>
+        </Link> : <Link to={'/' + url}>{text}</Link>
         }
     </li>
 );

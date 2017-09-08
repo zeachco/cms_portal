@@ -8,11 +8,13 @@ import Navigation from '../components/Navigation';
 import SearchPage from './SearchPage';
 import EditPage from './EditPage';
 import UserList from './UserList';
+import ItemList from './ItemList';
 import NotFound from './NotFound';
 import Login from '../components/Login';
 
 const PageMap = {
     users: UserList,
+    items: ItemList,
 };
 
 const App = ({

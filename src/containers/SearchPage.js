@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './ListedElement.css';
+
 const SearchPage = ({
     children,
 }) => (

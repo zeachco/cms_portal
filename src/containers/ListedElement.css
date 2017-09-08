@@ -1,4 +1,4 @@
-.listed-user {
+.listed-element {
     display: block;
     background: #eee;
     text-decoration: none;
@@ -7,12 +7,12 @@
     padding: .25em 1em;
 }
 
-.listed-user:hover {
+.listed-element:hover {
     background: #ccc;
     color: #000;
 }
 
-.listed-user:active {
+.listed-element:active {
     background: #aaa;
     color: #f00;
 }

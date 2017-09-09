@@ -13,8 +13,19 @@ import NotFound from './NotFound';
 import Login from '../components/Login';
 
 const PageMap = {
+    dashboard: null,
+    profile: null,
+    spaces: null,
     users: UserList,
     items: ItemList,
+    categories: null,
+};
+
+const EditorMap = {
+    spaces: null,
+    users: null,
+    items: null,
+    categories: null,
 };
 
 const App = ({
@@ -38,9 +49,10 @@ const App = ({
             </SearchPage>
         );
         if (id) {
+            const Editor = EditorMap[page] || NotFound;
             editorJsx = (
                 <EditPage>
-                    Editing User {id}
+                    <Editor />
                 </EditPage>
             );
         }

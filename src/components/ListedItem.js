@@ -8,6 +8,10 @@ float: right;
 font-size: .8em;
 color: #333;
 text-align: right;
+text-overflow: ellipsis;
+white-space: nowrap;
+overflow: hidden;
+max-width: 30%;
 `;
 
 const ListedUser = ({
@@ -16,7 +20,7 @@ const ListedUser = ({
     space,
     shortDescription,
     labels,
-    ...attributes
+    // ...attributes
 }) => (
     <Link to={`/items/edit/${_id}`} className="listed-element item">
         <div>
@@ -29,14 +33,16 @@ const ListedUser = ({
             <strong>{code}</strong><br />
             <small>{shortDescription}</small>
         </div>
-        {JSON.stringify(attributes)}
+        {/* {JSON.stringify(attributes)} */}
     </Link>
 );
 
 ListedUser.propTypes = {
     _id: PropTypes.string.isRequired,
-    firstName: PropTypes.string,
-    lastName: PropTypes.string,
+    code: PropTypes.string.isRequired,
+    space: PropTypes.string.isRequired,
+    shortDescription: PropTypes.string.isRequired,
+    labels: PropTypes.array.isRequired,
 };
 
 export default ListedUser;

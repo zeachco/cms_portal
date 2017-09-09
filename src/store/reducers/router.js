@@ -2,11 +2,6 @@ import {fromJS, Map} from 'immutable-short-string-notation';
 
 import {CORE} from '../actionTypes';
 
-export default (state = Map(), {type, payload}) => {
-    if (type === CORE.ROUTE_CHANGE) {
-        return state.setIn('params', fromJS(payload));
+const routeToState = (state = Map(), {type, payload}) => type === CORE.ROUTE_CHANGE ? state.setIn('params', fromJS(payload)) : state;
 
-    } else {
-        return state;
-    }
-};
+export default routeToState;

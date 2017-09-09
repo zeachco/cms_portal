@@ -25,7 +25,7 @@ class UserList extends Component {
         return (
             <SearchPage>
                 <h1>{this.props.i18n.get('items')}</h1>
-                {this.state.items.map(item => <ListedItem key={item._id} {...item} />)}
+                {this.state.items.filter((m, i) => i < 100).map(item => <ListedItem key={item._id} {...item} />)}
             </SearchPage>
         );
     }

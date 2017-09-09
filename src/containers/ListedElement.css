@@ -1,6 +1,6 @@
 .listed-element {
     display: block;
-    background: #eee;
+    background: #ddd;
     text-decoration: none;
     color: #222;
 
@@ -8,11 +8,16 @@
 }
 
 .listed-element:hover {
-    background: #ccc;
+    background: #eee;
     color: #000;
 }
 
 .listed-element:active {
-    background: #aaa;
+    background: #bbb;
     color: #f00;
+}
+
+.listed-element.item,
+.listed-element.user {
+    min-height: 3em;
 }

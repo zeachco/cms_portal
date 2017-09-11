@@ -12,4 +12,5 @@ export default {
     pleaseConnect: 'Please login',
     username: 'Username',
     password: 'Password',
+    refresh_list: 'Refresh list',
 };

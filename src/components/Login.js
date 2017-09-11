@@ -8,9 +8,9 @@ import {login} from '../store/actions/session';
 class Login extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
-
         autobind(this);
+
+        this.state = {};
     }
 
     refUser(el) {

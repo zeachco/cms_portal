@@ -12,4 +12,5 @@ export default {
     pleaseConnect: 'Veuillez vous identifier',
     username: 'Utilisateur',
     password: 'Mot de passe',
+    refresh_list: 'Rafraichir la liste',
 };

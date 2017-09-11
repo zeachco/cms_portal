@@ -7,6 +7,8 @@ import './ThreeColsLayout.css';
 import Navigation from '../components/Navigation';
 import SearchPage from './SearchPage';
 import EditPage from './EditPage';
+import ItemEditor from '../components/ItemEditor';
+import UserEditor from '../components/UserEditor';
 import UserList from './UserList';
 import ItemList from './ItemList';
 import NotFound from './NotFound';
@@ -23,8 +25,8 @@ const PageMap = {
 
 const EditorMap = {
     spaces: null,
-    users: null,
-    items: null,
+    users: UserEditor,
+    items: ItemEditor,
     categories: null,
 };
 

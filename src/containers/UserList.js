@@ -1,40 +1,36 @@
-import React, {Component} from 'react';
-import autobind from 'auto-bind-es5';
+import React from 'react';
 import {connect} from 'react-redux';
 import IProps from 'react-immutable-proptypes';
 
 import SearchPage from './SearchPage';
-import {backend} from '../services/api';
 import ListedUser from '../components/ListedUser';
+import {searchUsers} from '../store/actions/services';
 
-class UserList extends Component {
-    constructor(props) {
-        super(props);
-        autobind(this);
+const refresh = e => {
+    e.preventDefault();
+    searchUsers(true);
+};
 
-        this.state = {
-            items: [],
-        };
-    }
-
-    componentDidMount() {
-        backend('admin/users').then(items => this.setState({items}));
-    }
-
-    render() {
-        return (
-            <SearchPage>
-                <h1>{this.props.i18n.get('users')}</h1>
-                {this.state.items.map(user => <ListedUser key={user._id} {...user} />)}
-            </SearchPage>
-        );
-    }
-}
+const UserList = ({
+    i18n,
+    users,
+}) => {
+    searchUsers();
+    return (
+        <SearchPage>
+            <h1>{i18n.get('users')}</h1>
+            <a href="refresh" onClick={refresh}>{i18n.get('refresh_list')}</a>
+            {users.toJS().map(user => <ListedUser key={user._id} {...user} />)}
+        </SearchPage>
+    );
+};
 
 UserList.propTypes = {
     i18n: IProps.map,
+    users: IProps.list,
 };
 
 export default connect(state => ({
     i18n: state.getIn('i18n.strings'),
+    users: state.getIn('services.users'),
 }))(UserList);

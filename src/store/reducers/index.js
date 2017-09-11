@@ -3,11 +3,13 @@ import {Map} from 'immutable-short-string-notation';
 import session from './session';
 import i18n from './i18n';
 import router from './router';
+import services from './services';
 
 const reducers = {
     session,
     i18n,
     router,
+    services,
 };
 
 export default (state = Map(), action) => {

@@ -16,3 +16,10 @@ export const searchUsers = force => {
         lastTime = now;
     }
 };
+
+export const searchItems = params => {
+    store.dispatch({type: DATA.USERS_SEARCH});
+    backend('admin/users')
+        .then(receiveUsers)
+        .catch(err => console.error(err)); // eslint-disable-line
+};

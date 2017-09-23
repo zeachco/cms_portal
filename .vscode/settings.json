@@ -1,3 +1,10 @@
 {
-    "eslint.autoFixOnSave": true
+  "prettier.eslintIntegration": true,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "all",
+  "prettier.jsxBracketSameLine": true,
+  "prettier.useTabs": false,
+  "prettier.printWidth": 120,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true
 }

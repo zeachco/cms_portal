@@ -13,6 +13,7 @@ import UserList from './UserList';
 import ItemList from './ItemList';
 import NotFound from './NotFound';
 import Login from '../components/Login';
+import modules from '../modules/listing';
 
 const PageMap = {
     dashboard: null,
@@ -37,6 +38,7 @@ const App = ({
     field,
     value,
 }) => {
+    const module = modules[page] || {}
     let bodyJsx = (
         <SearchPage>
             <Login />
@@ -44,14 +46,14 @@ const App = ({
     );
     let editorJsx = null;
     if (isAuth) {
-        const Page = PageMap[page] || NotFound;
+        const Page = module.listingComponent || PageMap[page] || NotFound;
         bodyJsx = (
             <SearchPage>
                 <Page />
             </SearchPage>
         );
         if (id) {
-            const Editor = EditorMap[page] || NotFound;
+            const Editor = module.detailedComponent || EditorMap[page] || NotFound;
             editorJsx = (
                 <EditPage>
                     <Editor />

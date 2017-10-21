@@ -4,12 +4,14 @@ import session from './session';
 import i18n from './i18n';
 import router from './router';
 import services from './services';
+import forms from './forms';
 
 const reducers = {
     session,
     i18n,
     router,
     services,
+    forms,
 };
 
 export default (state = Map(), action) => {

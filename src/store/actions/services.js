@@ -1,6 +1,6 @@
 import store from '..';
 import {DATA} from '../actionTypes';
-import {backend} from '../../services/api';
+import {backend, METHODS} from '../../services/api';
 
 export const receiveUsers = users => store.dispatch({type: DATA.USERS_RECEIVE, payload: users});
 
@@ -17,9 +17,14 @@ export const searchUsers = force => {
     }
 };
 
+export const receiveItems = items => {
+    store.dispatch({type: DATA.ITEMS_RECEIVE, payload: items});
+}
+
 export const searchItems = params => {
-    store.dispatch({type: DATA.USERS_SEARCH});
-    backend('admin/users')
-        .then(receiveUsers)
+    const values = store.getState().getIn('forms.items').toJS();
+    store.dispatch({type: DATA.ITEMS_SEARCH});
+    backend('admin/items/search', METHODS.POST, values)
+        .then(receiveItems)
         .catch(err => console.error(err)); // eslint-disable-line
 };

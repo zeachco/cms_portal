@@ -12,6 +12,7 @@ import {logout} from '../store/actions/session';
 import {changeLanguage} from '../store/actions/i18n';
 import BusyServer from '../components/BusyServer';
 import MenuItem from '../components/MenuItem';
+import modules from '../modules/listing'
 
 const switchLang = lang => e => {
     e.preventDefault();
@@ -42,6 +43,18 @@ const Navigation = ({
             <MenuItem key="items" Icon={Box} url="items" text={l.get('items')} />,
             <MenuItem key="logout" Icon={Exit} url="" text={l.get('logout')} onClick={logout} />
         );
+        for(const key in modules) {
+            const module = modules[key];
+            console.log(key, module)
+            links.push(
+                <MenuItem
+                    key={key}
+                    Icon={module.icon}
+                    url={module.path}
+                    text={l.get(module.name)}
+                />
+            );
+        }
     } else if (isChecking) {
         links.push(
             <li key="loading">

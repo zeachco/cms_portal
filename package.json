@@ -20,7 +20,7 @@
     "react-scripts": "1.0.12",
     "redux": "^3.7.2",
     "redux-form": "^7.1.1",
-    "styled-components": "^2.1.2"
+    "styled-components": "^2.2.1"
   },
   "devDependencies": {
     "bulma": "^0.5.1",

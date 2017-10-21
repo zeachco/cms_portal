@@ -9,7 +9,6 @@ class Login extends Component {
     constructor(props) {
         super(props);
         autobind(this);
-
         this.state = {};
     }
 

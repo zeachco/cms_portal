@@ -13,4 +13,6 @@ export default {
     username: 'Username',
     password: 'Password',
     refresh_list: 'Refresh list',
+    search: 'Search',
+    tracker: 'Tracker',
 };

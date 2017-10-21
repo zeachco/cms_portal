@@ -13,4 +13,6 @@ export default {
     username: 'Utilisateur',
     password: 'Mot de passe',
     refresh_list: 'Rafraichir la liste',
+    search: 'Recherche',
+    tracker: 'Minuteur',
 };

@@ -16,6 +16,6 @@ export default {
     search: 'Recherche',
     tracker: 'Minuteur',
     code: 'Code',
-    start: 'Demarrer',
-    stop: 'Arreter',
+    start: 'Démarrer',
+    stop: 'Arrêter',
 };

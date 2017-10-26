@@ -9,7 +9,7 @@ const Tracker = ({
 }) => (
     <div>
         <h1>Tracker <small>{key}</small></h1>
-        {JSON.stringify(time.toJS(), null, 2)}
+        <pre>{JSON.stringify(time.toJS(), null, 2)}</pre>
     </div>
 );
 

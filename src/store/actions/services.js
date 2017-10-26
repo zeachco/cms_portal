@@ -35,9 +35,26 @@ export const saveCurrentTimeAndLocation = ({
     customer = 'unknown',
 }) => {
     const saveValues = position => {
+        const {
+            accuracy,
+            altitude,
+            altitudeAccuracy,
+            heading,
+            latitude,
+            longitude,
+            speed,
+        } = position.coords;
         timesRef.push({
-            timestamp: Date.now(),
-            position,
+            timestamp: position.timestamp,
+            gps: {
+                accuracy,
+                altitude,
+                altitudeAccuracy,
+                heading,
+                latitude,
+                longitude,
+                speed,
+            },
             customer,
         });
     };

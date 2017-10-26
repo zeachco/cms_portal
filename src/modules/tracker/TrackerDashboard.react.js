@@ -33,13 +33,17 @@ const ListedTime = styled.div`
 `;
 
 const StartStop = styled.button`
-    padding: 5px;
+    padding: 10px;
     margin: 5px 0;
     background: ${({action}) => action === 'start' ? '#0d8' : '#f88'};
-    border: 1px solid black;
+    border: 1px solid #666;
     display: block;
     border-radius: 3px;
     width: 100%;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0 0 1px black;
+    font-size: 1.6em;
 `;
 
 const Time = (time, key) => {
@@ -57,7 +61,6 @@ const TrackerDashboard = ({
 }) => {
     return (
         <div>
-            <h1>Dashboard</h1>
             <StartStop action={nextAction} onClick={handleButtonClick}>{l.get(nextAction, '--')}</StartStop>
             {times && times.map(Time)}
         </div>

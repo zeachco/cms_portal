@@ -1,9 +1,28 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+import IProps from 'react-immutable-proptypes';
 
-const Tracker = () => (
+const Tracker = ({
+    time,
+    key,
+}) => (
     <div>
-        <h1>Tracker</h1>
+        <h1>Tracker <small>{key}</small></h1>
+        {JSON.stringify(time.toJS(), null, 2)}
     </div>
 );
 
-export default Tracker;
+Tracker.propTypes = {
+    time: IProps.map.isRequired,
+    key: PropTypes.string.isRequired,
+};
+
+const mapStateToprops = state => {
+    const id = state.getIn('router.params.id');
+    return {
+        time: state.getIn('services.times.' + id),
+    };
+};
+
+export default connect(mapStateToprops)(Tracker);

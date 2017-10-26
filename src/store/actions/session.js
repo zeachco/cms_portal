@@ -4,7 +4,6 @@ import {backend, METHODS} from '../../services/api';
 
 export const badLogin = () => store.dispatch({type: SESSION.DISCONNECT, payload: 'bad login'});
 
-
 export const disconnect = reason => {
     store.dispatch({type: SESSION.DISCONNECT, payload: reason});
 };

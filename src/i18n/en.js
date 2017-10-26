@@ -15,4 +15,5 @@ export default {
     refresh_list: 'Refresh list',
     search: 'Search',
     tracker: 'Tracker',
+    code: 'Code',
 };

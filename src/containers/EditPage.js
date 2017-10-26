@@ -4,8 +4,7 @@ import {connect} from 'react-redux';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 
-import Close from '../components/CloseButton';
-
+import Close from '../components/CloseButton.react';
 
 const TopRight = styled.div`
     float: right

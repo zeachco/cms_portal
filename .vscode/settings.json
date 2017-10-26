@@ -1,3 +1,14 @@
 {
-  "eslint.autoFixOnSave": true
+  "eslint.autoFixOnSave": true,
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true,
+    "**/build": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/build": true
+  }
 }

@@ -4,8 +4,12 @@ import {FORM} from '../actionTypes';
 
 const defaultState = fromJS({
     items: {
-        search: ''
-    }
+        search: {
+            text: '',
+            code: '',
+            space: '',
+        },
+    },
 });
 
 export default (state = defaultState, {type, payload}) => {

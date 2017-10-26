@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import IProps from 'react-immutable-proptypes';
-import {Field} from 'redux-form';
 
 import SearchPage from './SearchPage';
 import ListedUser from '../components/ListedUser';
@@ -20,9 +19,8 @@ const UserList = ({
     return (
         <SearchPage>
             <h1>{i18n.get('users')}</h1>
-            <Field
+            <input
                 name="users.filter"
-                component="input"
                 type="text"
             />
             <a href="refresh" onClick={refresh}>{i18n.get('refresh_list')}</a>

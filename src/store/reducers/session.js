@@ -5,6 +5,12 @@ import {SESSION} from '../actionTypes';
 export const defaultState = fromJS({
     isAuth: false,
     retreivingSession: true,
+    enabledModules: [
+        'profile',
+        'tracker',
+        'users',
+        'items',
+    ],
 });
 
 export default (state = defaultState, {type, payload}) => {

@@ -3,7 +3,7 @@ import languages from './languages';
 export default {
     ...languages,
     home: 'Acceuil',
-    users: 'Utilisateurs',
+    users: 'Usagers',
     items: 'Articles',
     login: 'Connexion',
     logout: 'Déconnexion',
@@ -15,4 +15,5 @@ export default {
     refresh_list: 'Rafraichir la liste',
     search: 'Recherche',
     tracker: 'Minuteur',
+    code: 'Code',
 };

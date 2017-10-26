@@ -11,7 +11,7 @@ import {set} from '../store/actions/forms';
 const handleSearch = e => {
     e.preventDefault();
     searchItems();
-}
+};
 
 const handleSearchTyping = e => set('items.search', e.target.value);
 
@@ -22,8 +22,8 @@ const ItemList = ({
     <SearchPage>
         <h1>{i18n.get('items')}</h1>
         <form onSubmit={handleSearch}>
-        <input placeholder={i18n.get('search')} onChange={handleSearchTyping} />
-        <input type="submit" value={i18n.get('search')} />
+            <input placeholder={i18n.get('search')} onChange={handleSearchTyping} />
+            <input type="submit" value={i18n.get('search')} />
         </form>
         {items.toJS().filter((m, i) => i < 100).map(item => <ListedItem key={item._id} {...item} />)}
     </SearchPage>

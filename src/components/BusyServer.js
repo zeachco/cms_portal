@@ -2,16 +2,26 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import Cog from 'react-icons/lib/fa/cog';
+import styled from 'styled-components';
 
-import './BusyServer.css';
+const Spinning = styled.label`
+@keyframes spin {
+    0% {transform: rotate(0deg)}
+    100% {transform: rotate(90deg)}
+}
+
+.busyServer {
+    animation: spin .5s infinite linear;
+}
+`;
 
 const BusyServer = ({
     text,
 }) => (
-    <label>
+    <Spinning>
         <Cog className="busyServer" />{' '}
         <span>{text}</span>
-    </label>
+    </Spinning>
 );
 
 BusyServer.propTypes = {

@@ -16,4 +16,6 @@ export default {
     search: 'Search',
     tracker: 'Tracker',
     code: 'Code',
+    start: 'Start',
+    stop: 'Stop',
 };

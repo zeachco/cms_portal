@@ -31,9 +31,8 @@ export const searchItems = () => {
 };
 
 const timesRef = db.database().ref().child('times');
-export const saveCurrentTimeAndLocation = ({
-    customer = 'unknown',
-}) => {
+export const saveCurrentTimeAndLocation = () => {
+    const action = store.getState().getIn('services.timeNextAction');
     const saveValues = position => {
         const {
             accuracy,
@@ -45,6 +44,7 @@ export const saveCurrentTimeAndLocation = ({
             speed,
         } = position.coords;
         timesRef.push({
+            action,
             timestamp: position.timestamp,
             gps: {
                 accuracy,
@@ -55,7 +55,6 @@ export const saveCurrentTimeAndLocation = ({
                 longitude,
                 speed,
             },
-            customer,
         });
     };
     if (navigator.geolocation) {
@@ -68,6 +67,6 @@ export const saveCurrentTimeAndLocation = ({
 timesRef.on('value', snap => {
     store.dispatch({
         type: DATA.TIMES_UPDATE,
-        payload: snap.val(),
+        payload: snap.val() || {},
     });
 });

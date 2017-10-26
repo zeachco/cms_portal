@@ -14,7 +14,7 @@ export default {
     password: 'Password',
     refresh_list: 'Refresh list',
     search: 'Search',
-    tracker: 'Tracker',
+    tracker: 'Timer',
     code: 'Code',
     start: 'Start',
     stop: 'Stop',

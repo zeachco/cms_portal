@@ -33,8 +33,9 @@ const ListedTime = styled.div`
 `;
 
 const StartStop = styled.button`
+    max-width: 250px;
     padding: 10px;
-    margin: 5px 0;
+    margin: 10px auto 20px;
     background: ${({action}) => action === 'start' ? '#0d8' : '#f88'};
     border: 1px solid #666;
     display: block;

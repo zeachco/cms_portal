@@ -22,11 +22,24 @@ const ListedTime = styled.div`
     &:before {
         content: ' ';
         display: inline-block;
-        margin-right: 5px;
-        width: 1em;
+        margin-right: 3px;
+        float: right;
+        width: 1.5em;
         height: 1em;
-        background: ${({action}) => action === 'start' ? 'green' : 'red'};
+        background: ${({action}) => action === 'start' ? '#0d8' : '#f88'};
+        border-radius: 1em;
+        box-shadow: 0 0 1px black;
     }
+`;
+
+const StartStop = styled.button`
+    padding: 5px;
+    margin: 5px 0;
+    background: ${({action}) => action === 'start' ? '#0d8' : '#f88'};
+    border: 1px solid black;
+    display: block;
+    border-radius: 3px;
+    width: 100%;
 `;
 
 const Time = (time, key) => {
@@ -45,7 +58,7 @@ const TrackerDashboard = ({
     return (
         <div>
             <h1>Dashboard</h1>
-            <button onClick={handleButtonClick}>{l.get(nextAction, '--')}</button>
+            <StartStop action={nextAction} onClick={handleButtonClick}>{l.get(nextAction, '--')}</StartStop>
             {times && times.map(Time)}
         </div>
     );

@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import IProps from 'react-immutable-proptypes';
+import moment from 'moment';
 
 const Tracker = ({
     time,
@@ -9,6 +10,9 @@ const Tracker = ({
 }) => (
     <div>
         <small>{id}</small>
+        <div>
+            {moment(time.get('timestamp')).format('YY-MM-DD HH:MM:SS')}
+        </div>
         <pre>{JSON.stringify(time.toJS(), null, 2)}</pre>
     </div>
 );

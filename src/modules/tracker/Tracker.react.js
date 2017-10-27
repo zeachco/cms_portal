@@ -5,22 +5,23 @@ import IProps from 'react-immutable-proptypes';
 
 const Tracker = ({
     time,
-    key,
+    id,
 }) => (
     <div>
-        <h1>Tracker <small>{key}</small></h1>
+        <small>{id}</small>
         <pre>{JSON.stringify(time.toJS(), null, 2)}</pre>
     </div>
 );
 
 Tracker.propTypes = {
     time: IProps.map.isRequired,
-    key: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
 };
 
 const mapStateToprops = state => {
     const id = state.getIn('router.params.id');
     return {
+        id,
         time: state.getIn('services.times.' + id),
     };
 };

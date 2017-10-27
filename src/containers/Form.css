@@ -26,6 +26,7 @@ label.field:hover input {
 
 label.field input:disabled {
     opacity: .5;
+    cursor: wait;
 }
 
 .cmsForm {

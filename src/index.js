@@ -7,7 +7,6 @@ import {HashRouter as Router, Route} from 'react-router-dom';
 import './theme/style.css';
 import registerServiceWorker from './registerServiceWorker';
 import store from './store';
-import {checkSession} from './store/actions/session';
 import {changeLanguage} from './store/actions/i18n';
 import {setCurrentRoute} from './store/actions/router';
 
@@ -40,7 +39,6 @@ const mount = () => {
     );
 };
 mount();
-checkSession();
 
 if (navigator && navigator.languages) {
     changeLanguage(navigator.languages[0].split('-')[0]);

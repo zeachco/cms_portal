@@ -1,6 +1,8 @@
 import store from '../';
 import {SESSION} from '../actionTypes';
-import {backend, METHODS} from '../../services/api';
+import db from '../../core/firebase';
+
+const auth = db.auth();
 
 export const badLogin = () => store.dispatch({type: SESSION.DISCONNECT, payload: 'bad login'});
 
@@ -20,15 +22,32 @@ export const receiveSession = session => {
 export const login = (username, password) => {
     store.dispatch({type: SESSION.DISCONNECT, payload: 'reconnecting'});
     store.dispatch({type: SESSION.CHECK_SESSION});
-    backend('login', METHODS.POST, {username, password}).then(receiveSession).catch(badLogin);
+    auth.signInWithEmailAndPassword(username, password);
+    // backend('login', METHODS.POST, {username, password}).then(receiveSession).catch(badLogin);
+};
+
+export const signIn = (username, password) => {
+    store.dispatch({type: SESSION.CHECK_SESSION});
+    auth.createUserWithEmailAndPassword(username, password);
 };
 
 export const logout = () => {
     store.dispatch({type: SESSION.CHECK_SESSION});
-    backend('logout', METHODS.POST).then(disconnect).catch(err => console.error(err));//eslint-disable-line no-console
+    auth.signOut();
 };
 
-export const checkSession = () => {
+setTimeout(() => {
     store.dispatch({type: SESSION.CHECK_SESSION});
-    backend('profile/me').then(receiveSession).catch(disconnect);
-};
+
+    auth.onAuthStateChanged(firebaseUser => {
+        console.log('onAuthStateChanged', firebaseUser);
+        if (firebaseUser){
+            receiveSession({
+                email: firebaseUser.email,
+            });
+        } else {
+            disconnect();
+        }
+    });
+
+}, 10000);

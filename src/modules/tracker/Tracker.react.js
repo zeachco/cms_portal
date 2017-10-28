@@ -9,11 +9,11 @@ const Tracker = ({
     id,
 }) => (
     <div>
-        <small>{id}</small>
-        <div>
-            {moment(time.get('timestamp')).format('YY-MM-DD HH:MM:SS')}
-        </div>
+        <h2>
+            {moment(time.get('timestamp')).format('MMMM Do YYYY, h:mm:ss a')}
+        </h2>
         <pre>{JSON.stringify(time.toJS(), null, 2)}</pre>
+        <small>{id}</small>
     </div>
 );
 

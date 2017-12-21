@@ -30,9 +30,10 @@ export const searchItems = () => {
         .catch(err => console.error(err)); // eslint-disable-line
 };
 
-const timesRef = db.database().ref().child('times');
 export const saveCurrentTimeAndLocation = () => {
     const action = store.getState().getIn('services.timeNextAction');
+    const sessionUid = store.getState().getIn('session.info.uid');
+    const timesRef = db.database().ref().child('times').child(sessionUid);
     const saveValues = position => {
         const {
             accuracy,
@@ -64,9 +65,7 @@ export const saveCurrentTimeAndLocation = () => {
     }
 };
 
-timesRef.on('value', snap => {
-    store.dispatch({
-        type: DATA.TIMES_UPDATE,
-        payload: snap.val() || {},
-    });
+export const updateTimes = times => store.dispatch({
+    type: DATA.TIMES_UPDATE,
+    payload: times || {},
 });

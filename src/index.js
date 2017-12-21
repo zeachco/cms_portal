@@ -9,6 +9,7 @@ import registerServiceWorker from './registerServiceWorker';
 import store from './store';
 import {changeLanguage} from './store/actions/i18n';
 import {setCurrentRoute} from './store/actions/router';
+import {initialize} from './store/actions/session';
 
 const mount = () => {
     const App = require('./containers/App').default;
@@ -39,6 +40,7 @@ const mount = () => {
     );
 };
 mount();
+initialize();
 
 if (navigator && navigator.languages) {
     changeLanguage(navigator.languages[0].split('-')[0]);

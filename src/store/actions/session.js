@@ -1,6 +1,7 @@
 import store from '../';
 import {SESSION} from '../actionTypes';
 import db from '../../core/firebase';
+import {updateTimes} from './services';
 
 const auth = db.auth();
 
@@ -36,18 +37,20 @@ export const logout = () => {
     auth.signOut();
 };
 
-setTimeout(() => {
+export const initialize = () => {
     store.dispatch({type: SESSION.CHECK_SESSION});
 
     auth.onAuthStateChanged(firebaseUser => {
-        console.log('onAuthStateChanged', firebaseUser);
         if (firebaseUser){
             receiveSession({
                 email: firebaseUser.email,
+                uid: firebaseUser.uid,
             });
+            const timesRef = db.database().ref().child('times').child(firebaseUser.uid);
+            timesRef.on('value', snap => updateTimes(snap.val()));
         } else {
             disconnect();
         }
     });
-
-}, 10000);
+}
+;

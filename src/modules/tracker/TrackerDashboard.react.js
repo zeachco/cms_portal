@@ -47,23 +47,23 @@ const StartStop = styled.button`
     font-size: 1.6em;
 `;
 
-const Time = (time, key) => {
-    return (
-        <ListedTime action={time.get('action')}>
-            <Link to={'/tracker/edit/' + key}><TimeReference timestamp={time.get('timestamp')} /></Link>
-        </ListedTime>
-    );
-};
-
 const TrackerDashboard = ({
     times,
     nextAction,
     l,
 }) => {
+    const timesJsx = [];
+    times.forEach((time, key) => {
+        timesJsx.push(
+            <ListedTime key={key} action={time.get('action')}>
+                <Link to={'/tracker/edit/' + key}><TimeReference timestamp={time.get('timestamp')} /></Link>
+            </ListedTime>
+        );
+    });
     return (
         <div>
             <StartStop action={nextAction} onClick={handleButtonClick}>{l.get(nextAction, '--')}</StartStop>
-            {times && times.map(Time)}
+            {timesJsx}
         </div>
     );
 };

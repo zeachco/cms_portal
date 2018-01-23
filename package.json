@@ -34,6 +34,8 @@
     "build": "react-scripts build",
     "test": "exit 0",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy:github": "gh-pages -d build",
+    "deploy:firebase": "firebase deploy",
+    "deploy": "npm run deploy:firebase"
   }
 }

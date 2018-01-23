@@ -2,7 +2,7 @@
   "name": "zeachco.com_portal",
   "version": "0.1.1",
   "private": true,
-  "homepage": "http://zeachco.github.io/cms_portal",
+  "homepage": "http://olivier-rousseau-guyot.com",
   "dependencies": {
     "auto-bind-es5": "^1.1.0",
     "classnames": "^2.2.5",

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {observer} from 'mobx-react';
 import cx from 'classnames';
 
 import './ThreeColsLayout.css';
@@ -10,14 +11,15 @@ import EditPage from './EditPage';
 import NotFound from './NotFound';
 import Login from '../components/Login';
 import modules from '../modules/listing';
+import state from 'src/store/state';
 
 const App = ({
-    isAuth,
     page,
     id,
     field,
     value,
 }) => {
+    const {isAuth} = state.session;
     const module = modules[page] || {};
     let bodyJsx = (
         <SearchPage>
@@ -59,19 +61,17 @@ const App = ({
 };
 
 App.propTypes = {
-    isAuth: PropTypes.bool.isRequired,
     page: PropTypes.string,
     id: PropTypes.string,
     field: PropTypes.string,
     value: PropTypes.string,
 };
 
-const mapStateToProps = state => ({
-    isAuth: state.getIn('session.isAuth'),
-    page: state.getIn('router.params.page'),
-    id: state.getIn('router.params.id'),
-    field: state.getIn('router.params.field'),
-    value: state.getIn('router.params.value'),
+const mapStateToProps = s => ({
+    page: s.getIn('router.params.page'),
+    id: s.getIn('router.params.id'),
+    field: s.getIn('router.params.field'),
+    value: s.getIn('router.params.value'),
 });
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(observer(App));

@@ -1,13 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+import {observer} from 'mobx-react';
+import state from 'src/store/state';
+import {l} from 'src/utils/i18n';
 
-const DisplayName = ({displayName}) => <span>{displayName}</span>;
-
-DisplayName.propTypes = {
-    displayName: PropTypes.string.isRequired,
+const DisplayName = () => {
+    const {info} = state.session;
+    const displayName = info ? info.firstName || info.email : l('profile');
+    return (
+        <span>
+            {displayName}
+        </span>
+    );
 };
 
-export default connect(state => ({
-    displayName: state.getIn('session.info.firstName') || state.getIn('session.info.email') || state.getIn('i18n.strings.profile'),
-}))(DisplayName);
+export default observer(DisplayName);

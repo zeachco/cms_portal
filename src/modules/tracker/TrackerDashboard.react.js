@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {observer} from 'mobx-react';
 import PropTypes from 'prop-types';
 import IProps from 'react-immutable-proptypes';
 import {Link} from 'react-router-dom';
@@ -7,6 +8,7 @@ import styled from 'styled-components';
 
 import {saveCurrentTimeAndLocation} from '../../store/actions/services';
 import TimeReference from '../common/TimeReference.react';
+import {l} from 'src/utils/i18n';
 
 const handleButtonClick = e => {
     e.preventDefault();
@@ -50,7 +52,6 @@ const StartStop = styled.button`
 const TrackerDashboard = ({
     times,
     nextAction,
-    l,
 }) => {
     const timesJsx = [];
     times.forEach((time, key) => {
@@ -62,7 +63,7 @@ const TrackerDashboard = ({
     });
     return (
         <div>
-            <StartStop action={nextAction} onClick={handleButtonClick}>{l.get(nextAction, '--')}</StartStop>
+            <StartStop action={nextAction} onClick={handleButtonClick}>{l(nextAction, '--')}</StartStop>
             {timesJsx}
         </div>
     );
@@ -71,13 +72,11 @@ const TrackerDashboard = ({
 TrackerDashboard.propTypes = {
     times: IProps.map,
     nextAction: PropTypes.string,
-    l: IProps.map,
 };
 
 const mapStateToProps = state => ({
     times: state.getIn('services.times'),
     nextAction: state.getIn('services.timeNextAction'),
-    l: state.getIn('i18n.strings'),
 });
 
-export default connect(mapStateToProps)(TrackerDashboard);
+export default connect(mapStateToProps)(observer(TrackerDashboard));

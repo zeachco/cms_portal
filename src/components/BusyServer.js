@@ -1,8 +1,8 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
+import {observer} from 'mobx-react';
 import Cog from 'react-icons/lib/fa/cog';
 import styled from 'styled-components';
+import {l} from 'src/utils/i18n';
 
 const Spinning = styled.label`
 @keyframes spin {
@@ -15,22 +15,11 @@ const Spinning = styled.label`
 }
 `;
 
-const BusyServer = ({
-    text,
-}) => (
+const BusyServer = () => (
     <Spinning>
         <Cog className="busyServer" />{' '}
-        <span>{text}</span>
+        <span>{l('busyServer')}</span>
     </Spinning>
 );
 
-BusyServer.propTypes = {
-    text: PropTypes.string.isRequired,
-};
-
-const mapStateToProps = state => ({
-    text: state.getIn('i18n.strings.busyServer'),
-});
-
-export default connect(mapStateToProps)(BusyServer)
-;
+export default observer(BusyServer);

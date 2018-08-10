@@ -1,11 +1,13 @@
 import React from 'react';
+import {observer} from 'mobx-react';
 
 import SearchPage from './SearchPage';
+import {l} from 'src/utils/i18n';
 
 const NotFound = () => (
     <SearchPage>
-        <h1>404 Not found!</h1>
+        <h1>{l('notFound')}</h1>
     </SearchPage>
 );
 
-export default NotFound;
+export default observer(NotFound);

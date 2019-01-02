@@ -13,21 +13,34 @@
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-icons": "^2.2.5",
     "react-immutable-proptypes": "^2.1.0",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "*",
-    "react-scripts": "1.0.12",
     "redux": "^3.7.2",
     "styled-components": "^2.2.1"
   },
   "devDependencies": {
+    "@types/classnames": "^2.2.6",
+    "@types/node": "^10.12.18",
+    "@types/react": "^16.7.18",
+    "@types/react-dom": "^16.0.11",
+    "@types/react-icons": "^2.2.6",
+    "@types/react-redux": "^6.0.11",
+    "@types/react-router-dom": "^4.3.1",
+    "@types/redux": "^3.6.0",
+    "@types/webpack-env": "^1.13.6",
     "bulma": "^0.5.1",
     "gh-pages": "^1.0.0",
-    "node-sass": "^4.5.3",
-    "node-sass-watcher": "^0.5.1"
+    "mobx": "^5.8.0",
+    "node-sass": "^4.11.0",
+    "node-sass-watcher": "^0.5.1",
+    "react-icons": "^3.2.2",
+    "react-scripts": "^2.1.2",
+    "tslint": "^5.12.0",
+    "tslint-config-airbnb": "^5.11.1",
+    "typescript": "^3.2.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -37,5 +50,11 @@
     "deploy:github": "gh-pages -d build",
     "deploy:firebase": "firebase deploy",
     "deploy": "npm run deploy:firebase"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

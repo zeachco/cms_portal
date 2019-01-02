@@ -52,5 +52,4 @@ export const initialize = () => {
             disconnect();
         }
     });
-}
-;
+};

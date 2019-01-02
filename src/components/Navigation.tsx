@@ -1,19 +1,19 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
-import IProps from 'react-immutable-proptypes';
-import Exit from 'react-icons/lib/md/exit-to-app';
-import styled from 'styled-components';
+import react from 'react';
+import { connect } from 'react-redux';
+import propTypes from 'prop-types';
+import reactImmutableProptypes from 'react-immutable-proptypes';
+import {exitToApp} from 'react-icons/lib/md';
+import styledComponents from 'styled-components';
 
-import {logout} from '../store/actions/session';
-import {changeLanguage} from '../store/actions/i18n';
-import BusyServer from '../components/BusyServer';
-import MenuItem from '../components/MenuItem';
-import modules from '../modules/listing';
+import { logout } from '../store/actions/session';
+import { changeLanguage } from '../store/actions/i18n';
+import BusyServer from './BusyServer';
+import MenuItem from './MenuItem';
+import listing from '../modules/listing';
 
-const switchLang = lang => e => {
-    e.preventDefault();
-    changeLanguage(lang);
+const switchLang = lang => (e) => {
+  e.preventDefault();
+  changeLanguage(lang);
 };
 
 const radius = '.5em';
@@ -60,71 +60,71 @@ const Navigation = ({
     selectablesLangs,
     enabledModules,
 }) => {
-    const links = [];
-    if (connected) {
-        enabledModules.forEach(name => {
-            const module = modules[name];
-            links.push(
+  const links = [];
+  if (connected) {
+    enabledModules.forEach(name => {
+      const module = modules[name];
+      links.push(
                 <MenuItem
                     key={name}
                     Icon={module.icon}
                     url={module.path}
                     label={l.get(name)}
                     component={module.labelComponent}
-                />
+                />,
             );
-        });
-        links.push(
+    });
+    links.push(
             <MenuItem
                 key="logout"
                 Icon={Exit}
                 url=""
                 label={l.get('logout')}
                 onClick={logout}
-            />
+            />,
         );
-    } else if (isChecking) {
-        links.push(
+  } else if (isChecking) {
+    links.push(
             <li key="loading">
                 <BusyServer />
-            </li>
+            </li>,
         );
-    } else {
-        links.push(
+  } else {
+    links.push(
             <li key="loading">
                 <label>{l.get('login')}</label>
-            </li>
+            </li>,
         );
-    }
-    links.push(
+  }
+  links.push(
         selectablesLangs.map(lang => (
             <li className="pull-right" key={'switch_to_+l'} onClick={switchLang(lang)}>
                 <a className="no-desktop" href={lang} title={l.get(lang, lang)}>{l.get(lang + '_short', lang)}</a>
                 <a className="no-mobile" href={lang} >{l.get(lang, lang)}</a>
             </li>
-        ))
+        )),
     );
-    return (
+  return (
         <MenuContainer className="tclNav">
             {links}
         </MenuContainer>
-    );
+  );
 };
 
 Navigation.propTypes = {
-    connected: PropTypes.bool.isRequired,
-    isChecking: PropTypes.bool.isRequired,
-    l: IProps.map.isRequired,
-    selectablesLangs: IProps.list.isRequired,
-    enabledModules: IProps.list,
+  connected: PropTypes.bool.isRequired,
+  isChecking: PropTypes.bool.isRequired,
+  l: IProps.map.isRequired,
+  selectablesLangs: IProps.list.isRequired,
+  enabledModules: IProps.list,
 };
 
 const mapStateToProps = state => ({
-    connected: state.getIn('session.isAuth'),
-    isChecking: state.getIn('session.retreivingSession'),
-    l: state.getIn('i18n.strings'),
-    selectablesLangs: state.getIn('i18n.selectables'),
-    enabledModules: state.getIn('session.enabledModules'),
+  connected: state.getIn('session.isAuth'),
+  isChecking: state.getIn('session.retreivingSession'),
+  l: state.getIn('i18n.strings'),
+  selectablesLangs: state.getIn('i18n.selectables'),
+  enabledModules: state.getIn('session.enabledModules'),
 });
 
 export default connect(mapStateToProps)(Navigation);

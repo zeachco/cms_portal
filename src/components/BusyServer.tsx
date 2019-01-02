@@ -15,9 +15,13 @@ const Spinning = styled.label`
 }
 `;
 
+interface IProps {
+    text: string
+}
+
 const BusyServer = ({
     text,
-}) => (
+}): React.SFC<IProps> => (
     <Spinning>
         <Cog className="busyServer" />{' '}
         <span>{text}</span>
